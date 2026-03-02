@@ -56,17 +56,16 @@
         <f:if condition="{item.hasSubpages}">
             <div class="bss-megamenu" id="megamenu-{item.data.uid}" aria-hidden="true">
                 <div class="bss-megamenu__inner">
-                    <f:switch expression="{item.data.tx_bsstheme_megamenu_layout}">
-                        <f:case value="grouped-columns">
-                            <f:render partial="MegaMenu/GroupedColumns" arguments="{item: item}"/>
-                        </f:case>
-                        <f:case value="promo-links-image">
-                            <f:render partial="MegaMenu/PromoLinksImage" arguments="{item: item}"/>
-                        </f:case>
-                        <f:defaultCase>
+                    <f:if condition="{item.data.tx_bsstheme_megamenu_layout} != 'none'">
+                        <f:then>
+                            <f:render partial="MegaMenu/{item.data.tx_bsstheme_megamenu_layout}"
+                                      arguments="{item: item}"
+                                      optional="true"/>
+                        </f:then>
+                        <f:else>
                             <f:render section="SimpleDropdown" arguments="{item: item}"/>
-                        </f:defaultCase>
-                    </f:switch>
+                        </f:else>
+                    </f:if>
                 </div>
             </div>
         </f:if>

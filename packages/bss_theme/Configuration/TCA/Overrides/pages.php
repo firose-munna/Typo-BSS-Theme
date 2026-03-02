@@ -13,8 +13,8 @@ $bssThemeColumns = [
             'renderType' => 'selectSingle',
             'items' => [
                 ['label' => 'None (no mega menu)', 'value' => 'none'],
-                ['label' => 'Grouped Columns (e.g. Services)', 'value' => 'grouped-columns'],
-                ['label' => 'Promo + Links + Image (e.g. Company)', 'value' => 'promo-links-image'],
+                ['label' => 'Grouped Columns (e.g. Services)', 'value' => 'GroupedColumns'],
+                ['label' => 'Promo + Links + Image (e.g. Company)', 'value' => 'PromoLinksImage'],
             ],
             'default' => 'none',
         ],

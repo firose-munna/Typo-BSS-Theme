@@ -7,3 +7,9 @@ page.includeCSS.bssTheme = EXT:bss_theme/Resources/Public/Css/bss-theme.css
 page.includeCSS.bssMegamenu = EXT:bss_theme/Resources/Public/Css/bss-megamenu.css
 page.includeJSFooter.bssMegamenu = EXT:bss_theme/Resources/Public/JavaScript/bss-megamenu.js
 page.includeJSFooter.bssMegamenu.type = module
+
+# Include BSS Hero Slider (Swiper.js + custom styles)
+page.includeCSS.swiper = EXT:bss_theme/Resources/Public/Css/vendor/swiper-bundle.min.css
+page.includeCSS.bssSlider = EXT:bss_theme/Resources/Public/Css/bss-hero-slider.css
+page.includeJSFooter.swiper = EXT:bss_theme/Resources/Public/JavaScript/vendor/swiper-bundle.min.js
+page.includeJSFooter.bssSlider = EXT:bss_theme/Resources/Public/JavaScript/bss-hero-slider.js

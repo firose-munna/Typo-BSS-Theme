@@ -1,1 +1,13 @@
 # BSS Theme backend configuration
+
+# Restore BSS content elements in the New Content Element wizard
+TCEFORM.tt_content {
+    CType.removeItems := removeFromList(bss_hero_slider)
+}
+
+# Add bss_hero_slider to the stage column (colPos=2) allowedContentTypes in all backend layouts
+mod.web_layout.BackendLayouts {
+    CaminoStartpage.config.backend_layout.rows.1.columns.1.allowedContentTypes := addToList(bss_hero_slider)
+    CaminoContentpage.config.backend_layout.rows.1.columns.1.allowedContentTypes := addToList(bss_hero_slider)
+    CaminoContentpageSidebar.config.backend_layout.rows.1.columns.1.allowedContentTypes := addToList(bss_hero_slider)
+}

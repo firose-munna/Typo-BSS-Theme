@@ -1,0 +1,41 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:layout name="Content/Unwrapped"/>
+
+<f:section name="Main">
+    <f:if condition="{record.tx_bsstheme_slider_items}">
+        <div class="bss-hero-slider swiper" data-bss-slider>
+            <div class="swiper-wrapper">
+                <f:for each="{record.tx_bsstheme_slider_items}" as="slide" iteration="iterator">
+                    <div class="swiper-slide">
+                        <f:render
+                            partial="HeroSlider/{slide.slide_layout}"
+                            arguments="{slide: slide, iterator: iterator}"
+                            optional="true"
+                        />
+                    </div>
+                </f:for>
+            </div>
+
+            <div class="bss-hero-slider__nav">
+                <button class="bss-hero-slider__prev" type="button" aria-label="Previous slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </button>
+                <button class="bss-hero-slider__next" type="button" aria-label="Next slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="bss-hero-slider__pagination"></div>
+        </div>
+    </f:if>
+</f:section>
+
+</html>

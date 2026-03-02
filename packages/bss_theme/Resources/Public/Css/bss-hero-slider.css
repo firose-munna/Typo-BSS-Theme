@@ -1,0 +1,290 @@
+/* ==========================================================================
+   BSS Hero Slider
+   ========================================================================== */
+
+.bss-hero-slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Slide Base
+   -------------------------------------------------------------------------- */
+
+.bss-slide {
+    position: relative;
+    height: 560px;
+    display: flex;
+    align-items: center;
+}
+
+.bss-slide__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.bss-slide__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.bss-slide__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10, 22, 40, 0.65);
+    z-index: 1;
+}
+
+.bss-slide__overlay--light {
+    background: rgba(10, 22, 40, 0.45);
+}
+
+/* --------------------------------------------------------------------------
+   Content Layout — Default (text left, image right)
+   -------------------------------------------------------------------------- */
+
+.bss-slide__content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--content-max-width, 1280px);
+    margin: 0 auto;
+    padding: 80px var(--component-padding-horizontal, 24px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    width: 100%;
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Content Layout — Centered
+   -------------------------------------------------------------------------- */
+
+.bss-slide__content--centered {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    max-width: 860px;
+}
+
+/* --------------------------------------------------------------------------
+   Content Layout — Split (image left, text right)
+   -------------------------------------------------------------------------- */
+
+.bss-slide__content--split {
+    grid-template-columns: 1fr 1fr;
+}
+
+.bss-slide__image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bss-slide__featured-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Typography
+   -------------------------------------------------------------------------- */
+
+.bss-slide__heading {
+    font-family: var(--headline-large-family, 'Inter', sans-serif);
+    font-size: var(--headline-large-size, clamp(32px, 4vw, 56px));
+    font-weight: var(--headline-large-weight, 700);
+    line-height: var(--headline-large-line-height, 1.15);
+    letter-spacing: var(--headline-large-letter-spacing, -0.02em);
+    margin: 0 0 16px;
+    color: #ffffff;
+}
+
+.bss-slide__heading--large {
+    font-size: clamp(36px, 5vw, 64px);
+}
+
+.bss-slide__subheading {
+    font-size: clamp(16px, 2vw, 20px);
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+.bss-slide__description {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0 0 24px;
+    line-height: 1.6;
+    max-width: 560px;
+}
+
+.bss-slide__content--centered .bss-slide__description {
+    max-width: 640px;
+}
+
+.bss-slide__cta {
+    margin-top: 8px;
+}
+
+.bss-slide__cta .button,
+.bss-slide__cta a {
+    color: #ffffff !important;
+}
+
+.bss-slide__image {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.bss-slide__image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation Arrows
+   -------------------------------------------------------------------------- */
+
+.bss-hero-slider__nav {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.bss-hero-slider__prev,
+.bss-hero-slider__next {
+    pointer-events: auto;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.bss-hero-slider__prev:hover,
+.bss-hero-slider__next:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.bss-hero-slider__prev:focus-visible,
+.bss-hero-slider__next:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   Pagination Dots
+   -------------------------------------------------------------------------- */
+
+.bss-hero-slider__pagination {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.bss-hero-slider__pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+    opacity: 1;
+}
+
+.bss-hero-slider__pagination .swiper-pagination-bullet:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.bss-hero-slider__pagination .swiper-pagination-bullet-active {
+    background: #ffffff;
+    transform: scale(1.2);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+    .bss-slide {
+        height: 400px;
+    }
+
+    .bss-slide__content {
+        grid-template-columns: 1fr;
+        padding: 48px 16px;
+        gap: 24px;
+    }
+
+    .bss-slide__content--split {
+        grid-template-columns: 1fr;
+    }
+
+    .bss-slide__image,
+    .bss-slide__image-col {
+        display: none;
+    }
+
+    .bss-hero-slider__prev,
+    .bss-hero-slider__next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .bss-hero-slider__nav {
+        padding: 0 8px;
+    }
+
+    .bss-hero-slider__pagination {
+        bottom: 16px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+    .bss-slide {
+        height: 480px;
+    }
+
+    .bss-slide__content {
+        padding: 60px 32px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .bss-slide {
+        height: 600px;
+    }
+
+    .bss-hero-slider__nav {
+        padding: 0 32px;
+    }
+}

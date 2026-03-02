@@ -1,0 +1,33 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<div class="bss-slide bss-slide--centered">
+    <f:if condition="{slide.background_image.0}">
+        <div class="bss-slide__bg">
+            <f:image image="{slide.background_image.0}" alt="" class="bss-slide__bg-img" width="1920c" loading="{f:if(condition: iterator.isFirst, then: 'eager', else: 'lazy')}"/>
+        </div>
+    </f:if>
+    <div class="bss-slide__overlay"></div>
+    <div class="bss-slide__content bss-slide__content--centered">
+        <f:if condition="{slide.header}">
+            <h2 class="bss-slide__heading bss-slide__heading--large">{slide.header}</h2>
+        </f:if>
+        <f:if condition="{slide.subheader}">
+            <p class="bss-slide__subheading">{slide.subheader}</p>
+        </f:if>
+        <f:if condition="{slide.bodytext}">
+            <p class="bss-slide__description">{slide.bodytext}</p>
+        </f:if>
+        <f:if condition="{slide.link_label}">
+            <div class="bss-slide__cta">
+                <f:link.typolink parameter="{slide.link}" class="button button--{f:if(condition: '{slide.link_config} != \'0\'', then: slide.link_config, else: 'inverted')}">
+                    {slide.link_label}
+                </f:link.typolink>
+            </div>
+        </f:if>
+    </div>
+</div>
+
+</html>

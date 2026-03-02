@@ -1,6 +1,11 @@
 # Add BSS template path (higher priority than Camino's paths.10)
 lib.fluidPage.paths.20 = EXT:bss_theme/Resources/Private/Templates/
 
+# Add BSS content element template paths (for custom CTypes like bss_hero_slider)
+lib.contentElement.templateRootPaths.20 = EXT:bss_theme/Resources/Private/Templates/Content/
+lib.contentElement.partialRootPaths.20 = EXT:bss_theme/Resources/Private/Templates/Partials/
+lib.contentElement.layoutRootPaths.20 = EXT:bss_theme/Resources/Private/Templates/Layouts/
+
 # Increase menu depth from 2 to 3 (for Services grouped columns)
 lib.fluidPage.dataProcessing.1763411533130.levels = 3
 
