@@ -38,7 +38,8 @@
         "typo3/cms-tstemplate": "^14.0",
         "typo3/cms-viewpage": "^14.0",
         "typo3/cms-webhooks": "^14.0",
-        "typo3/theme-camino": "^14.1"
+        "typo3/theme-camino": "^14.1",
+        "bss/bss-theme": "@dev"
     },
     "repositories": {
         "packages": {

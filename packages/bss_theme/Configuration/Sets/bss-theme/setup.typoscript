@@ -1,0 +1,9 @@
+@import './TypoScript/*.typoscript'
+
+# Include BSS theme color & typography overrides (loads first)
+page.includeCSS.bssTheme = EXT:bss_theme/Resources/Public/Css/bss-theme.css
+
+# Include BSS mega menu CSS & JS
+page.includeCSS.bssMegamenu = EXT:bss_theme/Resources/Public/Css/bss-megamenu.css
+page.includeJSFooter.bssMegamenu = EXT:bss_theme/Resources/Public/JavaScript/bss-megamenu.js
+page.includeJSFooter.bssMegamenu.type = module

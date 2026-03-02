@@ -1,0 +1,281 @@
+/* ==========================================================================
+   BSS Theme - Color & Typography Override
+   Replaces Camino's caramel/warm palette with BSS navy blue/white scheme
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Override Camino Color Scheme
+   Applied to all theme variants to enforce BSS branding
+   -------------------------------------------------------------------------- */
+:root,
+.theme-caramel-cream,
+.theme-ocean-breeze,
+.theme-forest-mist,
+.theme-violet-velvet {
+    /* Primary - Navy Blue */
+    --color-primary-75: #3b82f6;
+    --color-primary-100: #0f2b5b;
+
+    /* Neutral Palette - Clean Grays */
+    --color-neutral-0: #ffffff;
+    --color-neutral-5: #f8fafc;
+    --color-neutral-10: #f1f5f9;
+    --color-neutral-15: #e2e8f0;
+    --color-neutral-20: #cbd5e1;
+    --color-neutral-30: #94a3b8;
+    --color-neutral-40: #64748b;
+    --color-neutral-50: #475569;
+    --color-neutral-60: #334155;
+    --color-neutral-70: #1e293b;
+    --color-neutral-80: #0f172a;
+    --color-neutral-90: #020617;
+
+    /* Status Colors */
+    --color-info-100: #2563eb;
+    --color-info-soft: #eff6ff;
+    --color-success-100: #16a34a;
+    --color-success-soft: #f0fdf4;
+    --color-warning-100: #ca8a04;
+    --color-warning-soft: #fefce8;
+    --color-error-100: #dc2626;
+    --color-error-soft: #fef2f2;
+
+    /* Typography - Override Playfair with modern sans-serif */
+    --headline-large-family: 'Inter', 'Open Sans', system-ui, -apple-system, sans-serif;
+    --headline-large-weight: 700;
+    --headline-large-size: 48px;
+    --headline-large-line-height: 1.15;
+    --headline-large-letter-spacing: -0.02em;
+
+    --headline-medium-family: 'Inter', 'Open Sans', system-ui, -apple-system, sans-serif;
+    --headline-medium-weight: 700;
+    --headline-medium-size: 36px;
+    --headline-medium-line-height: 1.2;
+    --headline-medium-letter-spacing: -0.01em;
+
+    --headline-small-family: 'Inter', 'Open Sans', system-ui, -apple-system, sans-serif;
+    --headline-small-weight: 700;
+    --headline-small-size: 28px;
+    --headline-small-line-height: 1.25;
+    --headline-small-letter-spacing: -0.01em;
+
+    --subline-large-family: 'Open Sans', system-ui, sans-serif;
+    --subline-large-weight: 400;
+
+    --subline-medium-family: 'Open Sans', system-ui, sans-serif;
+    --subline-medium-weight: 400;
+
+    --subline-small-family: 'Open Sans', system-ui, sans-serif;
+    --subline-small-weight: 400;
+
+    --title-large-family: 'Open Sans', system-ui, sans-serif;
+    --title-large-weight: 600;
+
+    --title-medium-family: 'Open Sans', system-ui, sans-serif;
+    --title-medium-weight: 600;
+
+    --title-small-family: 'Open Sans', system-ui, sans-serif;
+    --title-small-weight: 600;
+
+    --label-large-family: 'Open Sans', system-ui, sans-serif;
+    --label-large-weight: 600;
+
+    --label-medium-family: 'Open Sans', system-ui, sans-serif;
+    --label-medium-weight: 600;
+
+    --label-small-family: 'Open Sans', system-ui, sans-serif;
+    --label-small-weight: 600;
+    --label-small-letter-spacing: 0.04em;
+
+    --body-large-family: 'Open Sans', system-ui, sans-serif;
+    --body-medium-family: 'Open Sans', system-ui, sans-serif;
+    --body-small-family: 'Open Sans', system-ui, sans-serif;
+
+    /* Layout */
+    --content-max-width: 1280px;
+    --corners-s: 6px;
+    --corners-m: 10px;
+    --corners-l: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Typography Adjustments
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    :root,
+    .theme-caramel-cream,
+    .theme-ocean-breeze,
+    .theme-forest-mist,
+    .theme-violet-velvet {
+        --headline-large-size: 56px;
+        --headline-medium-size: 40px;
+        --headline-small-size: 32px;
+    }
+}
+
+@media (min-width: 1280px) {
+    :root,
+    .theme-caramel-cream,
+    .theme-ocean-breeze,
+    .theme-forest-mist,
+    .theme-violet-velvet {
+        --headline-large-size: 64px;
+        --headline-medium-size: 48px;
+        --headline-small-size: 36px;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Global BSS Style Overrides
+   -------------------------------------------------------------------------- */
+
+/* Body defaults */
+body {
+    color: var(--color-neutral-80);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Links - use accent blue instead of primary */
+body {
+    --link-color: #2563eb;
+    --link-color-hover: #1d4ed8;
+}
+
+/* Header - white background matching original BSS site */
+.header.bss-header {
+    background: #ffffff;
+    --header-height: var(--bss-header-height, 72px);
+    padding: 0;
+}
+
+/* Footer - dark navy */
+.footer {
+    background: #0a1628;
+    color: #94a3b8;
+    --link-color: #e2e8f0;
+    --link-color-hover: #ffffff;
+}
+
+/* Buttons - BSS style */
+.button--primary {
+    background: var(--color-primary-100);
+    border-color: var(--color-primary-100);
+}
+
+.button--primary:hover {
+    background: #1a3a6b;
+    border-color: #1a3a6b;
+}
+
+/* Hero - Full-width background with dark overlay (matching original BSS site) */
+.hero {
+    --hero-overlay: rgba(10, 22, 40, 0.7);
+    position: relative;
+}
+
+/* Dark overlay on hero image */
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--hero-overlay);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Content sits above overlay */
+.hero__content-wrapper {
+    position: relative;
+    z-index: 2;
+}
+
+/* Center text, white color */
+.hero .hero__content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    --max-width-paragraph: 100%;
+}
+
+.hero .headline {
+    color: #ffffff;
+    text-align: center;
+}
+
+.hero .subline {
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+}
+
+.hero .button-wrapper {
+    justify-content: center;
+}
+
+/* Override Camino's split 2-column layout to full-width background */
+@media (min-width: 768px) {
+    .hero {
+        --hero-grid-template-columns: 1fr;
+        --hero-content-max-width: 800px;
+        --picture-clip-path: none;
+    }
+
+    .hero .hero__image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 0;
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .hero .hero__content-wrapper {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .hero .hero__content {
+        max-width: var(--hero-content-max-width);
+        margin: 0 auto;
+        --max-width-paragraph: 100%;
+    }
+}
+
+/* Component backgrounds - cleaner alternating */
+.component--bg-10 {
+    background: var(--color-neutral-5);
+}
+
+.component--bg-80 {
+    background: var(--color-primary-100);
+    color: var(--color-neutral-0);
+    --link-color: #93c5fd;
+    --link-color-hover: #ffffff;
+}
+
+.component--bg-100 {
+    background: #0a1628;
+    color: var(--color-neutral-0);
+    --link-color: #93c5fd;
+    --link-color-hover: #ffffff;
+}
+
+/* Headline decorative line - BSS blue accent */
+.headline__decoration {
+    background: #2563eb;
+}
+
+/* Cards and content boxes */
+.textmedia-teaser,
+.textteaser {
+    border-radius: var(--corners-m);
+    overflow: hidden;
+}

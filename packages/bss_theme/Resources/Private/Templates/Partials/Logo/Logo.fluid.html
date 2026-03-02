@@ -1,0 +1,15 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<f:if condition="{startpage.record.tx_themecamino_logo.0.uid}">
+    <f:then>
+        <f:image src="{startpage.record.tx_themecamino_logo.0.uid}" treatIdAsReference="1" maxHeight="50" loading="eager"/>
+    </f:then>
+    <f:else>
+        <span style="font-size: 22px; font-weight: 700; letter-spacing: -0.02em; color: #0A1119;">BSS</span>
+    </f:else>
+</f:if>
+
+</html>

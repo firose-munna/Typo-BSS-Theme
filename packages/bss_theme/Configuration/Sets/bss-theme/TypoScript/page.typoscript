@@ -1,0 +1,8 @@
+# Add BSS template path (higher priority than Camino's paths.10)
+lib.fluidPage.paths.20 = EXT:bss_theme/Resources/Private/Templates/
+
+# Increase menu depth from 2 to 3 (for Services grouped columns)
+lib.fluidPage.dataProcessing.1763411533130.levels = 3
+
+# Include spacer pages in menu (used as column headers)
+lib.fluidPage.dataProcessing.1763411533130.includeSpacer = 1

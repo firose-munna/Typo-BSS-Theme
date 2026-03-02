@@ -1,0 +1,4 @@
+name: bss/bss-theme
+label: "BSS Theme"
+dependencies:
+  - typo3/theme-camino

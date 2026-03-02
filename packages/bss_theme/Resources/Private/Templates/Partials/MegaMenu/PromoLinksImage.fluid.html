@@ -1,0 +1,53 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<div class="bss-megamenu__promo-layout">
+    <!-- Left: Promo Card -->
+    <div class="bss-megamenu__promo-card">
+        <f:if condition="{item.data.tx_bsstheme_megamenu_heading}">
+            <h3 class="bss-megamenu__promo-heading">{item.data.tx_bsstheme_megamenu_heading}</h3>
+        </f:if>
+        <f:if condition="{item.data.tx_bsstheme_megamenu_description}">
+            <p class="bss-megamenu__promo-description">{item.data.tx_bsstheme_megamenu_description}</p>
+        </f:if>
+        <f:if condition="{item.data.tx_bsstheme_megamenu_cta_label}">
+            <f:link.typolink parameter="{item.data.tx_bsstheme_megamenu_cta_link}" class="bss-megamenu__promo-cta">
+                {item.data.tx_bsstheme_megamenu_cta_label}
+            </f:link.typolink>
+        </f:if>
+    </div>
+
+    <!-- Center: Links -->
+    <div class="bss-megamenu__promo-links">
+        <f:if condition="{item.children}">
+            <f:variable name="childCount" value="{f:count(subject: item.children)}"/>
+            <ul class="bss-megamenu__promo-links-list {f:if(condition: '{childCount} > 5', then: 'bss-megamenu__promo-links-list--grid')}">
+                <f:for each="{item.children}" as="subitem">
+                    <f:if condition="!{subitem.spacer}">
+                        <li class="bss-megamenu__promo-links-item">
+                            <f:link.typolink parameter="{subitem.link}" class="bss-megamenu__promo-link">
+                                <f:if condition="{subitem.data.tx_bsstheme_nav_icon}">
+                                    <span class="bss-megamenu__icon-wrapper bss-megamenu__icon-wrapper--small">
+                                        <f:render partial="MegaMenu/NavIcon" arguments="{icon: subitem.data.tx_bsstheme_nav_icon}"/>
+                                    </span>
+                                </f:if>
+                                <span>{subitem.title}</span>
+                            </f:link.typolink>
+                        </li>
+                    </f:if>
+                </f:for>
+            </ul>
+        </f:if>
+    </div>
+
+    <!-- Right: Illustration Image -->
+    <f:if condition="{item.megamenuImages}">
+        <div class="bss-megamenu__promo-image">
+            <f:image image="{item.megamenuImages.0}" alt="{item.title}" class="bss-megamenu__promo-img" width="400"/>
+        </div>
+    </f:if>
+</div>
+
+</html>

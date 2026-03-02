@@ -1,0 +1,610 @@
+/* ==========================================================================
+   BSS Theme - Mega Menu Styles
+   Extends Camino theme header with full-width mega menu navigation
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Variables
+   -------------------------------------------------------------------------- */
+:root {
+    --bss-header-bg: var(--color-primary-100, #0a2540);
+    --bss-header-text: #0A1119;
+    --bss-header-height: 72px;
+    --bss-megamenu-bg: #f8f9fb;
+    --bss-megamenu-border: #e2e8f0;
+    --bss-megamenu-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --bss-nav-link-color: #0A1119;
+    --bss-nav-link-hover: #1D9EDA;
+    --bss-cta-bg: #0B1D4B;
+    --bss-cta-text: #ffffff;
+    --bss-cta-hover-bg: #091638;
+    --bss-icon-bg: #e8f0fe;
+    --bss-icon-color: var(--color-primary-100, #0a2540);
+    --bss-text-primary: #1a202c;
+    --bss-text-secondary: #4a5568;
+    --bss-link-hover-bg: #edf2f7;
+    --bss-promo-card-bg: #ffffff;
+    --bss-breakpoint: 1280px;
+}
+
+/* --------------------------------------------------------------------------
+   Header Override
+   -------------------------------------------------------------------------- */
+.header.bss-header {
+    background: #ffffff;
+    color: var(--bss-header-text);
+    position: relative;
+    z-index: 100;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0;
+    height: var(--bss-header-height);
+}
+
+.bss-header__content {
+    max-width: var(--content-max-width, 1320px);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--component-padding-horizontal, 24px);
+    height: var(--bss-header-height);
+    gap: 8px;
+}
+
+/* Logo */
+.bss-header__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    color: var(--bss-header-text);
+    text-decoration: none;
+    height: var(--bss-header-height);
+}
+
+.bss-header__logo svg,
+.bss-header__logo img {
+    display: block;
+    max-height: 44px;
+    width: auto;
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Toggle (Hamburger)
+   -------------------------------------------------------------------------- */
+.bss-header__mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: auto;
+    z-index: 110;
+}
+
+.bss-header__hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 24px;
+    height: 24px;
+}
+
+.bss-header__hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #0A1119;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Hamburger -> X animation */
+.bss-header__mobile-toggle[aria-expanded="true"] .bss-header__hamburger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.bss-header__mobile-toggle[aria-expanded="true"] .bss-header__hamburger span:nth-child(2) {
+    opacity: 0;
+}
+.bss-header__mobile-toggle[aria-expanded="true"] .bss-header__hamburger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   Desktop Navigation
+   -------------------------------------------------------------------------- */
+.bss-header__menu {
+    display: flex;
+    align-items: center;
+}
+
+.bss-header__nav {
+    display: flex;
+    align-items: center;
+}
+
+.bss-header__nav-list {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+}
+
+.bss-header__nav-list-item {
+    position: static;
+    display: flex;
+    align-items: center;
+}
+
+.bss-header__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    color: var(--bss-nav-link-color);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+    height: var(--bss-header-height);
+    line-height: var(--bss-header-height);
+    transition: color 0.2s ease, background 0.2s ease;
+    position: relative;
+}
+
+.bss-header__nav-link:hover {
+    color: var(--bss-nav-link-hover);
+}
+
+.bss-header__nav-link--active {
+    position: relative;
+}
+
+.bss-header__nav-link--active::after {
+    content: "";
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: #1D9EDA;
+    border-radius: 1px;
+}
+
+/* Chevron icon */
+.bss-header__chevron {
+    width: 10px;
+    height: 10px;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.bss-header__nav-list-item:hover .bss-header__chevron,
+.bss-header__nav-list-item--megamenu-open .bss-header__chevron {
+    transform: rotate(180deg);
+}
+
+/* CTA Button */
+.bss-header__nav-list-item--cta {
+    margin-left: 16px;
+}
+
+.header.bss-header .bss-header__cta-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 24px;
+    background: var(--bss-cta-bg);
+    color: #ffffff;
+    border: 2px solid transparent;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.header.bss-header .bss-header__cta-button:hover {
+    background: var(--bss-cta-hover-bg);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   Mega Menu Panel (Desktop)
+   -------------------------------------------------------------------------- */
+.bss-megamenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bss-megamenu-bg);
+    border-top: none;
+    box-shadow: var(--bss-megamenu-shadow);
+    z-index: 99;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.bss-megamenu--open {
+    display: block;
+    opacity: 1;
+}
+
+.bss-megamenu__inner {
+    max-width: var(--content-max-width, 1320px);
+    margin: 0 auto;
+    padding: 40px var(--component-padding-horizontal, 24px);
+}
+
+/* --------------------------------------------------------------------------
+   Grouped Columns Layout (Services)
+   -------------------------------------------------------------------------- */
+.bss-megamenu__columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.bss-megamenu__column-heading {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--bss-text-secondary);
+    margin: 0 0 20px 0;
+    padding-bottom: 0;
+}
+
+.bss-megamenu__column-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bss-megamenu__column-item {
+    display: block;
+}
+
+.bss-megamenu__column-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    color: var(--bss-text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.bss-megamenu__column-link:hover {
+    background: var(--bss-link-hover-bg);
+}
+
+.bss-megamenu__column-link-text {
+    flex: 1;
+}
+
+/* --------------------------------------------------------------------------
+   Icon Wrapper
+   -------------------------------------------------------------------------- */
+.bss-megamenu__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--bss-icon-bg);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.bss-megamenu__icon-wrapper .bss-nav-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--bss-icon-color);
+}
+
+.bss-megamenu__icon-wrapper--small {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+}
+
+.bss-megamenu__icon-wrapper--small .bss-nav-icon {
+    width: 16px;
+    height: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   Promo + Links + Image Layout (Company / Hire Developers)
+   -------------------------------------------------------------------------- */
+.bss-megamenu__promo-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* Promo Card */
+.bss-megamenu__promo-card {
+    background: var(--bss-promo-card-bg);
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.bss-megamenu__promo-heading {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--bss-text-primary);
+    margin: 0 0 12px 0;
+    line-height: 1.4;
+}
+
+.bss-megamenu__promo-description {
+    font-size: 14px;
+    color: var(--bss-text-secondary);
+    line-height: 1.6;
+    margin: 0 0 20px 0;
+}
+
+.bss-megamenu__promo-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 24px;
+    background: var(--bss-header-bg);
+    color: var(--bss-cta-text);
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.bss-megamenu__promo-cta:hover {
+    background: var(--bss-cta-hover-bg);
+}
+
+/* Promo Links List */
+.bss-megamenu__promo-links-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.bss-megamenu__promo-links-list--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+}
+
+.bss-megamenu__promo-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: var(--bss-text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.bss-megamenu__promo-link:hover {
+    background: var(--bss-link-hover-bg);
+}
+
+/* Promo Image */
+.bss-megamenu__promo-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.bss-megamenu__promo-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   Simple Dropdown (fallback for items without mega menu layout)
+   -------------------------------------------------------------------------- */
+.bss-megamenu__simple-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    max-width: 320px;
+}
+
+.bss-megamenu__simple-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: var(--bss-text-primary);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: background 0.15s ease;
+}
+
+.bss-megamenu__simple-link:hover {
+    background: var(--bss-link-hover-bg);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile Styles (< 1280px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1279px) {
+    .bss-header__mobile-toggle {
+        display: flex;
+        align-items: center;
+    }
+
+    .bss-header__menu {
+        display: none;
+        position: fixed;
+        top: var(--bss-header-height);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #ffffff;
+        z-index: 105;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .bss-header__menu--open {
+        display: block;
+    }
+
+    .bss-header__nav {
+        width: 100%;
+    }
+
+    .bss-header__nav-list {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+        gap: 0;
+    }
+
+    .bss-header__nav-list-item {
+        flex-direction: column;
+        border-bottom: 1px solid var(--bss-megamenu-border);
+    }
+
+    .bss-header__nav-link {
+        color: var(--bss-text-primary);
+        height: auto;
+        line-height: 1.5;
+        padding: 14px 0;
+        justify-content: space-between;
+    }
+
+    .bss-header__nav-link:hover {
+        color: var(--bss-nav-link-hover);
+        background: none;
+    }
+
+    /* CTA button mobile */
+    .bss-header__nav-list-item--cta {
+        margin-left: 0;
+        margin-top: 16px;
+        border-bottom: none;
+    }
+
+    .bss-header__cta-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Mega menu mobile */
+    .bss-megamenu {
+        position: static;
+        transform: none;
+        width: 100%;
+        max-width: 100%;
+        border-top: none;
+        box-shadow: none;
+        background: #f8f9fb;
+        border-radius: 8px;
+        margin-bottom: 8px;
+        opacity: 1;
+    }
+
+    .bss-megamenu--open {
+        display: block;
+    }
+
+    .bss-megamenu__inner {
+        padding: 16px;
+    }
+
+    /* Grouped columns mobile */
+    .bss-megamenu__columns {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    /* Promo layout mobile */
+    .bss-megamenu__promo-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .bss-megamenu__promo-image {
+        display: none;
+    }
+
+    .bss-megamenu__promo-links-list--grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Desktop hover bridge (prevent menu close when moving to dropdown)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1280px) {
+    .bss-header__nav-link.JS_bss-megamenu-trigger::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -20px;
+        right: -20px;
+        height: 6px;
+        transform: translateY(100%);
+        background: transparent;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Body scroll lock when mobile menu is open
+   -------------------------------------------------------------------------- */
+.bss-body--menu-open {
+    overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   Accessibility
+   -------------------------------------------------------------------------- */
+.bss-header__nav-link:focus-visible,
+.bss-header__cta-button:focus-visible,
+.bss-megamenu__column-link:focus-visible,
+.bss-megamenu__promo-link:focus-visible,
+.bss-megamenu__promo-cta:focus-visible,
+.bss-megamenu__simple-link:focus-visible {
+    outline: 2px solid var(--bss-header-bg);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Hide Camino's default menu styles when BSS header is active */
+.bss-header .header__menu-button,
+.bss-header .header__menu,
+.bss-header .header__nav,
+.bss-header .header__nav-list,
+.bss-header .header__subnav {
+    all: unset;
+}

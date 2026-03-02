@@ -1,0 +1,28 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<div class="bss-megamenu__columns">
+    <f:for each="{item.children}" as="column">
+        <div class="bss-megamenu__column">
+            <h3 class="bss-megamenu__column-heading">{column.title}</h3>
+            <ul class="bss-megamenu__column-list">
+                <f:for each="{column.children}" as="subitem">
+                    <li class="bss-megamenu__column-item">
+                        <f:link.typolink parameter="{subitem.link}" class="bss-megamenu__column-link">
+                            <f:if condition="{subitem.data.tx_bsstheme_nav_icon}">
+                                <span class="bss-megamenu__icon-wrapper">
+                                    <f:render partial="MegaMenu/NavIcon" arguments="{icon: subitem.data.tx_bsstheme_nav_icon}"/>
+                                </span>
+                            </f:if>
+                            <span class="bss-megamenu__column-link-text">{subitem.title}</span>
+                        </f:link.typolink>
+                    </li>
+                </f:for>
+            </ul>
+        </div>
+    </f:for>
+</div>
+
+</html>

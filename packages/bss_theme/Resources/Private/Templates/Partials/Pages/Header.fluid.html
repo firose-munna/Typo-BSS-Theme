@@ -1,0 +1,101 @@
+<html
+    xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+    data-namespace-typo3-fluid="true"
+>
+
+<header class="header bss-header {f:if(condition: '{site.configuration.settings.camino.header.fixedPosition}', then: 'header--fixed')}">
+    <div class="bss-header__content">
+        <f:link.typolink parameter="{breadcrumb.0.link}" class="bss-header__logo">
+            <f:render partial="Logo/Logo" arguments="{startpage: breadcrumb.0}"/>
+        </f:link.typolink>
+
+        <button class="bss-header__mobile-toggle JS_bss-mobile-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="bss-header__hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </button>
+
+        <div class="bss-header__menu" id="bss-navigation">
+            <nav class="bss-header__nav" aria-label="{f:translate(domain: 'theme_camino.messages', key: 'menu.main.label')}">
+                <f:if condition="{mainMenu}">
+                    <ul class="bss-header__nav-list">
+                        <f:for each="{mainMenu}" as="item">
+                            <f:if condition="{item.data.tx_bsstheme_nav_is_cta}">
+                                <f:then>
+                                    <f:render section="CtaButton" arguments="{item: item}"/>
+                                </f:then>
+                                <f:else>
+                                    <f:render section="MainMenuItem" arguments="{item: item}"/>
+                                </f:else>
+                            </f:if>
+                        </f:for>
+                    </ul>
+                </f:if>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<f:section name="MainMenuItem">
+    <li class="bss-header__nav-list-item {f:if(condition: item.hasSubpages, then: 'bss-header__nav-list-item--has-megamenu')}">
+        <f:link.typolink
+            parameter="{item.link}"
+            class="bss-header__nav-link {f:if(condition: '{item.active}', then: 'bss-header__nav-link--active')} {f:if(condition: item.hasSubpages, then: 'JS_bss-megamenu-trigger')}"
+            additionalAttributes="{f:if(condition: item.hasSubpages, then: {data-megamenu: 'megamenu-{item.data.uid}', aria-expanded: 'false'})}"
+        >
+            {item.title}
+            <f:if condition="{item.hasSubpages}">
+                <svg class="bss-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </f:if>
+        </f:link.typolink>
+
+        <f:if condition="{item.hasSubpages}">
+            <div class="bss-megamenu" id="megamenu-{item.data.uid}" aria-hidden="true">
+                <div class="bss-megamenu__inner">
+                    <f:switch expression="{item.data.tx_bsstheme_megamenu_layout}">
+                        <f:case value="grouped-columns">
+                            <f:render partial="MegaMenu/GroupedColumns" arguments="{item: item}"/>
+                        </f:case>
+                        <f:case value="promo-links-image">
+                            <f:render partial="MegaMenu/PromoLinksImage" arguments="{item: item}"/>
+                        </f:case>
+                        <f:defaultCase>
+                            <f:render section="SimpleDropdown" arguments="{item: item}"/>
+                        </f:defaultCase>
+                    </f:switch>
+                </div>
+            </div>
+        </f:if>
+    </li>
+</f:section>
+
+<f:section name="CtaButton">
+    <li class="bss-header__nav-list-item bss-header__nav-list-item--cta">
+        <f:link.typolink parameter="{item.link}" class="bss-header__cta-button">
+            {item.title}
+        </f:link.typolink>
+    </li>
+</f:section>
+
+<f:section name="SimpleDropdown">
+    <ul class="bss-megamenu__simple-list">
+        <f:for each="{item.children}" as="subitem">
+            <f:if condition="!{subitem.spacer}">
+                <li class="bss-megamenu__simple-item">
+                    <f:link.typolink parameter="{subitem.link}" class="bss-megamenu__simple-link">
+                        <f:if condition="{subitem.data.tx_bsstheme_nav_icon}">
+                            <f:render partial="MegaMenu/NavIcon" arguments="{icon: subitem.data.tx_bsstheme_nav_icon}"/>
+                        </f:if>
+                        {subitem.title}
+                    </f:link.typolink>
+                </li>
+            </f:if>
+        </f:for>
+    </ul>
+</f:section>
+
+</html>

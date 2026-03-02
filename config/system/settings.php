@@ -65,7 +65,7 @@ return [
     'MAIL' => [
         'transport' => 'smtp',
         'transport_sendmail_command' => '',
-        'transport_smtp_encrypt' => '',
+        'transport_smtp_encrypt' => false,
         'transport_smtp_password' => '',
         'transport_smtp_server' => 'localhost:25',
         'transport_smtp_username' => '',
